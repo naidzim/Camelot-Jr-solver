@@ -1,0 +1,65 @@
+<config>
+	<piece>
+		<nom nom="CHEVALIER"></nom>
+        <id idmin=1 idmax =1 ></id>
+	</piece>
+	<piece>
+		<nom nom="Princess"></nom>
+        <id idmin=2 idmax =2></id>
+	</piece>
+	<piece>
+		<nom nom="orange piece 1"></nom>
+        <id idmin=14 idmax=17></id>
+	</piece>   
+    <piece>
+		<nom nom="orange piece 2"></nom>
+        <id idmin=18 idmax=21></id>
+	</piece>        
+	<piece>
+		<nom nom="purple piece"></nom>
+        <id idmin=8 idmax=13></id>
+	</piece>
+	<piece>
+		<nom nom="green piece"></nom>
+        <id idmin=1 idmax=6></id>
+		<rotation1 id=1 ymin=-0.2 ymax=0.2 ></rotation1>
+        <rotation2 id=3 ymin=-0.2 ymax=0.2 ></rotation2>
+        <rotation3 id=1 ymin=-1 ymax=-0.9 ></rotation3>
+        <rotation4 id=3 ymin=-1 ymax=-0.9 ></rotation4>
+        <rotation5 id=1 ymin=0.8 ymax=1 ></rotation5>
+        <rotation6 id=3 ymin=0.8 ymax=1 ></rotation6>
+	</piece>
+    <piece>
+		<nom nom="blue piece 1"></nom>
+        <id idmin=22 idmax=26></id>
+		<rotation1 id=25 ymin=-0.2 ymax=0.2 ></rotation1>
+        <rotation2 id=23 ymin=-0.2 ymax=0.2 ></rotation2>
+        <rotation3 id=25 ymin=-1 ymax=-0.9 ></rotation3>
+        <rotation4 id=23 ymin=-1 ymax=-0.9 ></rotation4>
+        <rotation5 id=25 ymin=0.8 ymax=1 ></rotation5>
+        <rotation6 id=23 ymin=0.8 ymax=1 ></rotation6>
+	</piece>
+    <piece>
+		<nom nom="blue piece 2"></nom>
+        <id idmin=27 idmax=31></id>
+		<rotation1 id=27 ymin=-0.2 ymax=0.2 ></rotation1>
+        <rotation2 id=29 ymin=-0.2 ymax=0.2 ></rotation2>
+        <rotation3 id=27 ymin=-1 ymax=-0.9 ></rotation3>
+        <rotation4 id=29 ymin=-1 ymax=-0.9 ></rotation4>
+        <rotation5 id=27 ymin=0.8 ymax=1 ></rotation5>
+        <rotation6 id=29 ymin=0.8 ymax=1 ></rotation6>
+	</piece>
+    <piece>
+		<nom nom="red piece 1"></nom>
+        <id idmin=32 idmax=35></id>
+	</piece>
+    <piece>
+		<nom nom="red piece 2"></nom>
+        <id idmin=36 idmax=39></id>
+	</piece>
+     <socle>
+        <id id=7></id>
+        <x xmin=0.01 xmax=0.04></x>
+        <y ymin=-0.9 ymax=0.13></y>
+	</socle>
+</config>

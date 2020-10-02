@@ -1,0 +1,28 @@
+<launch>
+
+    <rosparam command="load" file="$(find camelot_jr)/config/pepper_bottom_cam.yaml" />
+    
+	<node name="viewer" pkg="image_view" type="image_view">
+		<remap from="/image" to="/aruco_marker_publisher/result"/>
+	</node>
+	
+	<node pkg="aruco_ros" type="marker_publisher" name="aruco_marker_publisher">
+		<remap from="/camera_info" to="/naoqi_driver/camera/bottom/camera_info" />
+		<remap from="/image" to="/naoqi_driver/camera/bottom/image_raw" />
+		<param name="image_is_rectified" value="True"/>
+		<param name="marker_size"        value="0.025"/>
+                <param name="reference_frame"    value="r_ankle"/>   <!-- frame in which the marker pose will be refered -->
+                <param name="camera_frame"       value="CameraBottom_optical_frame"/>      
+	</node>	
+	
+        
+	<include file="$(find naoqi_driver)/launch/naoqi_driver.launch">
+	<arg name="nao_ip"  value="192.168.1.140" />
+	<arg name="roscore_ip"  value="192.168.1.122" />
+<!--	<arg name="network_interface"  value="wlo1" /> -->
+	<arg name="network_interface"  value="eno1" />
+	</include>
+	
+	<node name="cube_position_broadcast_node" pkg="camelot_jr" type="cube_position_broadcast"/>
+            
+</launch>

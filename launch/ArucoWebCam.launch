@@ -1,0 +1,27 @@
+<launch>
+
+	<node name="soundplay_node" pkg="sound_play" type="soundplay_node.py"/>
+    
+	<node name="usb_cam" pkg="usb_cam" type="usb_cam_node" output="screen" >
+		 <param name="video_device" value="/dev/video2" />
+		 <param name="pixel_format" value="mjpeg" />
+                 <param name="camera_frame_id" value="usb_cam" />
+                 <param name="io_method" value="mmap"/>
+		 <param name="camera_info_url" value="file://$(find camelot_jr)/results/ost.yaml"/>
+	</node>
+	
+	<node name="viewer" pkg="image_view" type="image_view">
+		<remap from="/image" to="/aruco_marker_publisher/result"/>
+	</node>
+	
+	<node pkg="aruco_ros" type="marker_publisher" name="aruco_marker_publisher">
+		<remap from="/camera_info" to="/usb_cam/camera_info" />
+		<remap from="/image" to="/usb_cam/image_raw" />
+		<param name="image_is_rectified" value="True"/>
+		<param name="marker_size"        value="0.025"/>
+	</node>	
+
+	<node name="cube_position_broadcast_node" pkg="camelot_jr" type="cube_position_broadcast"/>
+	
+	
+</launch>

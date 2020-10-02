@@ -1,0 +1,3 @@
+<launch>
+  <node name="cube_position_broadcast_node" pkg="camelot_jr" type="cube_position_broadcast"/>
+</launch>
