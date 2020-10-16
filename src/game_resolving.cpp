@@ -100,8 +100,8 @@ int main(int argc, char **argv)
         vector<Piece> pieceSol;
         xtractImage(marray,pieceDep,pieceSol);
      
-        Chevalier p1("Chevalier",1,2,0);
-        Princesse p2("Princess",1,1,4);
+        Chevalier p1("Chevalier",1,2,5);
+        Princesse p2("Princess",1,3,0);
 
         pieceDep.push_back(p1);
         pieceDep.push_back(p2);

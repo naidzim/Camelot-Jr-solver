@@ -155,7 +155,7 @@ void configXml(const char* xmlFileName)
             pID->Attribute("ymax", &SYmax);
         }
 
-        cout << "CIDmin = " << CIDmin << endl;
+       /* cout << "CIDmin = " << CIDmin << endl;
         cout << "CIDmax = " << CIDmax << endl;
         cout << "PIDmin = " << PIDmin << endl;
         cout << "PIDmax = " << PIDmax << endl;
@@ -191,7 +191,7 @@ void configXml(const char* xmlFileName)
         cout << "SXmin = " << SXmin << endl;
         cout << "SXmax = " << SXmax << endl;
         cout << "SYmin = " << SYmin << endl;
-        cout << "SYmax = " << SYmax << endl;
+        cout << "SYmax = " << SYmax << endl;*/
 
     }
     else
@@ -270,7 +270,12 @@ void xtractImage(const aruco_msgs::MarkerArray& msg, vector<Piece> &pieceDep, ve
 
     unsigned int ppId, gpId, gpFId, bp1Id, bp1FId, bp2Id, bp2FId, op1Id, op2Id,rp1Id,rp2Id; // index in msg.markers array
     unsigned int bp1Rot=1, bp2Rot=1, gpRot=1;
+    configXml("config.xml"); //extraction des données du fichier config xml
+    cout << "PuIDmin = " << PuIDmax << endl;
+    cout << "PuIDmax = " << PuIDmin << endl;
+    cout << "IDmax = " << PuIDmin << endl;
 
+    
     for (int i=0; i<msg.markers.size(); i++)
     {
         int id = msg.markers[i].id;
@@ -318,10 +323,10 @@ void xtractImage(const aruco_msgs::MarkerArray& msg, vector<Piece> &pieceDep, ve
                 }
             }
         }
-        if ( id >= 22 && id <=26) // blue 1
+        if ( id >= B1IDmin && id <= B1IDmax) // blue 1
         {
             bp1 = true; bp1Id = i;
-            if(id == 25)
+            if(id == B1RotImpaire)
             {
                 bp1F = true;
                 bp1FId = i;
@@ -339,7 +344,7 @@ void xtractImage(const aruco_msgs::MarkerArray& msg, vector<Piece> &pieceDep, ve
                     bp1Rot = 3;
                 }
             }
-            else if(id == 23)
+            else if(id == B2RotPaire)
             {
                 bp1F = true;
                 bp1FId = i;
@@ -358,10 +363,10 @@ void xtractImage(const aruco_msgs::MarkerArray& msg, vector<Piece> &pieceDep, ve
                 }
             }
         }
-        if ( id >= 27 && id <=31) // blue 2 
+        if ( id >= B2IDmin && id <= B2IDmax) // blue 2 
         {
             bp2 = true; bp2Id = i;
-            if(id == 27)
+            if(id == B2RotImpaire)
             {
                 bp2F = true;
                 bp2FId = i;
@@ -379,7 +384,7 @@ void xtractImage(const aruco_msgs::MarkerArray& msg, vector<Piece> &pieceDep, ve
                     bp2Rot = 3;
                 }
             }
-            else if(id == 29)
+            else if(id == B2RotPaire)
             {
                 bp2F = true;
                 bp2FId = i;
@@ -398,19 +403,19 @@ void xtractImage(const aruco_msgs::MarkerArray& msg, vector<Piece> &pieceDep, ve
                 }
             }
         }
-        if ( id >= 14 && id <=17) // orange 1 
+        if ( id >= OP1IDmin && id <= OP1IDmax) // orange 1 
         {
             op1 = true; op1Id = i;
         }
-        if ( id >= 18 && id <=21) // orange 2
+        if ( id >= OP2IDmin && id <= OP2IDmax) // orange 2
         {
             op2 = true; op2Id = i;
         }
-        if ( id >= 32 && id <=35) // red 1 
+        if ( id >= R1IDmin && id <= R1IDmax) // red 1 
         {
             rp1 = true; rp1Id = i;
         }
-        if ( id >= 36 && id <=39) // red 2
+        if ( id >= R2IDmin && id <= R2IDmax) // red 2
         {
             rp2 = true; rp2Id = i;
         }
