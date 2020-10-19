@@ -107,15 +107,33 @@ $ source catkin_ws/devel/setup.bash
 4. Make sure your webcam is connected to the computer
 <!-- USAGE EXAMPLES -->
 ## Usage
+### Terminal 1
+Open a new terminal in which we are going to launch the ROS core and the Aruco/Camera nodes
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+Run:
 
+```sh
+$ roslaunch camelot_jr ArucoWebCam.launch
+```
+
+A new windows will open showing the sight of your camera using Aruco. Make sure that it detects and localize the "Ar markers" on Camelot-jr pieces. 
+
+### Terminal 2
+
+On this terminal we are going to run the Camelot-Jr programm
+
+Run :
+
+```sh
+$ rosrun camelot_jr game_resolving_node 
+```
+And follow the instructions on the screen 
 
 
 <!-- ROADMAP -->
 ## Roadmap
 
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/naidzim/Camelot-Jr-solver/issues) for a list of proposed features (and known issues).
 
 
 
@@ -135,32 +153,20 @@ Contributions are what make the open source community such an amazing place to b
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE` for more information.
-
+Distributed under the MIT License.
 
 
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+Najib IDZIM - najib.idzim@etu.uca.fr
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Project Link: [https://github.com/naidzim/Camelot-Jr-solver](https://github.com/naidzim/Camelot-Jr-solver)
 
 
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Img Shields](https://shields.io)
-* [Choose an Open Source License](https://choosealicense.com)
-* [GitHub Pages](https://pages.github.com)
-* [Animate.css](https://daneden.github.io/animate.css)
-* [Loaders.css](https://connoratherton.com/loaders)
-* [Slick Carousel](https://kenwheeler.github.io/slick)
-* [Smooth Scroll](https://github.com/cferdinandi/smooth-scroll)
-* [Sticky Kit](http://leafo.net/sticky-kit)
-* [JVectorMap](http://jvectormap.com)
-* [Font Awesome](https://fontawesome.com)
 
 
 
