@@ -17,6 +17,8 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
+
+<!--
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
@@ -24,7 +26,7 @@
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
-
+-->
 
 <!-- PROJECT LOGO -->
 <br />
@@ -59,11 +61,9 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Product Name Screen Shot][product-screenshot]]
 
 Camelot-Jr automatic solver for robotic purposes. The programm uses ROS and provides the solution of the 48 game puzzles and others if any.
-
-A list of commonly used resources that I find helpful are listed in the acknowledgements.
 
 ### Built With
 
@@ -76,15 +76,14 @@ A list of commonly used resources that I find helpful are listed in the acknowle
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
+This project use ROS melodic distribution. Before you start you need to install it and create a catkin workspace.
+Please refer to ros tutorials to install and create the workspace : (http://wiki.ros.org/ROS/Tutorials)
+
+* Aruco
 ```sh
-npm install npm@latest -g
+sudo apt-get install ros-melodic-aruco
 ```
 
 ### Installation
