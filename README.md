@@ -63,7 +63,7 @@
 
 [![Product Name Screen Shot][product-screenshot]]
 
-Camelot-Jr automatic solver for robotic purposes. The programm uses ROS and provides the solution of the 48 game puzzles and others if any.
+Camelot-Jr automatic solver for robotic purposes.  and provides the solution of the 48 game puzzles and others if any.
 
 ### Built With
 
@@ -75,6 +75,7 @@ Camelot-Jr automatic solver for robotic purposes. The programm uses ROS and prov
 
 <!-- GETTING STARTED -->
 ## Getting Started
+The programm runs on ROS environement and Uses Aruco augmented reality libraries for object detection (you may need a webcamera).
 
 ### Prerequisites
 
@@ -88,28 +89,26 @@ sudo apt-get install ros-melodic-aruco
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repository in your catkin workspace
 ```sh
-git clone https://github.com/your_username_/Project-Name.git
+$ cd catkin_ws/src/
+$ git clone https://github.com/naidzim/Camelot-Jr-solver.git
 ```
-3. Install NPM packages
+2. Go back to the Catkin_ws and run 
 ```sh
-npm install
+$ cd ../ 
+$ catkin_make
 ```
-4. Enter your API in `config.js`
-```JS
-const API_KEY = 'ENTER YOUR API';
+3. Source your environements 
+```sh
+$ source /opt/ros/melodic/setup.bash
+$ source catkin_ws/devel/setup.bash
 ```
-
-
-
+4. Make sure your webcam is connected to the computer
 <!-- USAGE EXAMPLES -->
 ## Usage
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
 
 
 
