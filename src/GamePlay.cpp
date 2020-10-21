@@ -192,50 +192,6 @@ void configXml(const char* xmlFileName)
             pID->Attribute("ymax", &c5max);
             
         }
-
-        /*cout << "CIDmin = " << CIDmin << endl;
-        cout << "CIDmax = " << CIDmax << endl;
-        cout << "PIDmin = " << PIDmin << endl;
-        cout << "PIDmax = " << PIDmax << endl;
-        cout << "OP1IDmin = " << OP1IDmin << endl;
-        cout << "OP1IDmax = " << OP1IDmax << endl;
-        cout << "OP2IDmin = " << OP2IDmin << endl;
-        cout << "OP2IDmax = " << OP2IDmax << endl;
-        cout << "PuIDmin = " << PuIDmin << endl;
-        cout << "PuIDmax = " << PuIDmax << endl;
-        cout << "R1IDmin = " << R1IDmin << endl;
-        cout << "R1IDmax = " << R1IDmax << endl;
-        cout << "R2IDmin = " << R2IDmin << endl;
-        cout << "R2IDmax = " << R2IDmax << endl;
-        cout << "GIDmin = " << GIDmin << endl;
-        cout << "GIDmax = " << GIDmax << endl;
-        cout << "GRotPaire = " << GRotPaire << endl;
-        cout << "GRotImpaire = " << GRotImpaire << endl;
-        cout << "B1IDmin = " << B1IDmin << endl;
-        cout << "B1IDmax = " << B1IDmax << endl;
-        cout << "B1RotPaire = " << B1RotPaire << endl;
-        cout << "B1RotImpaire = " << B1RotImpaire << endl;
-        cout << "B2IDmin = " << B2IDmin << endl;
-        cout << "B2IDmax = " << B2IDmax << endl;
-        cout << "B2RotPaire = " << B2RotPaire << endl;
-        cout << "B2RotImpaire = " << B2RotImpaire << endl;
-        cout << "R12Ymax = " << R12Ymax << endl;
-        cout << "R12Ymin = " << R12Ymin << endl;
-        cout << "R34Ymax = " << R34Ymax << endl;
-        cout << "R34Ymin = " << R34Ymin << endl;
-        cout << "R56Ymax = " << R56Ymax << endl;
-        cout << "R56Ymin = " << R56Ymin << endl;
-        cout << "SocleID = " << SocleID << endl;
-        cout << "SXmin = " << SXmin << endl;
-        cout << "SXmax = " << SXmax << endl;
-        cout << "SYmin = " << SYmin << endl;
-        cout << "SYmax = " << SYmax << endl;*/
-
-        cout << "l0min = " << l0min << endl;
-        cout << "l1min = " << l1min << endl;
-        cout << "l2min = " << l2min << endl;
-        cout << "l3min = " << l3min << endl;
-
     }
     else
     {
@@ -259,44 +215,44 @@ bool operator!=(Coordonnes const& cor1, Coordonnes const& cor2)
 
 int toLigne(float z)
 {
-    if (z>=0.00 && z <= 0.05)
+    if (z>=l3min && z <= l3max)
     {
         return 3;
     }
-    else if (z>=0.065 && z <= 0.085)
+    else if (z>=l2min && z <= l2max)
     {
         return 2;
     }
-    else if (z>=0.09 && z <= 0.125)
+    else if (z>=l1min && z <= l1max)
     {
         return 1;
     }
-    else if (z > 0.125)
+    else if (z > l0min)
         return 0;
 }
 int toColonne(float y)
 {
-    if (y <= -0.06 && y >= -0.08)
+    if (y <= c0max && y >= c0min)
     {
         return 0;
     }
-    else if (y <= -0.02 && y >= -0.045)
+    else if (y <= c1max && y >= c1min)
     {
         return 1;
     }
-    else if (y <= 0.004 && y >= -0.006)
+    else if (y <= c2max && y >= c2min)
     {
         return 2;
     }
-    else if (y <= 0.04 && y >= 0.03)
+    else if (y <= c3max && y >= c3min)
     {
         return 3;
     }
-    else if (y <= 0.075 && y >= 0.065)
+    else if (y <= c4max && y >= c4min)
     {
         return 4;
     }
-    else if (y <= 0.115 && y >= 0.09)
+    else if (y <= c5max && y >= c5min)
     {
         return 5;
     }
@@ -318,9 +274,6 @@ void xtractImage(const aruco_msgs::MarkerArray& msg, vector<Piece> &pieceDep, ve
 
     configXml("/home/najib/catkin_ws/src/camelot_jr/config.xml"); //extraction des données du fichier config xml
 
-    cout << "PuIDmin = " << PuIDmax << endl;
-    cout << "PuIDmax = " << PuIDmin << endl;
-    cout << "IDmax = " << PuIDmin << endl;
 
     
     for (int i=0; i<msg.markers.size(); i++)

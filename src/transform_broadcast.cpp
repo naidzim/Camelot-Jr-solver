@@ -62,7 +62,7 @@ void chatterCallback(const aruco_msgs::MarkerArray& msg)
     
     if (found_marker(msg,7,mSocle))  // on cherche le marker de ref (socle)
     {   
-        ROS_INFO("On voit le marker 7 (socle) du repere de reference  et nb_markers = %d",nb_markers);
+        //ROS_INFO("On voit le marker 7 (socle) du repere de reference  et nb_markers = %d",nb_markers);
             // on calcule le repere de la camera par rapport au repere scole.
             Transformation  T1InCamera(mSocle.pose.pose); // repere du marker socle dans le repere de la camera
             TCamera = T1InCamera.inverse();               // repere de la camera dans repere du marker socle
@@ -99,13 +99,12 @@ void chatterCallback(const aruco_msgs::MarkerArray& msg)
                     float zo = pieceMarker.pose.pose.orientation.z;
                     if (x<0 && x >-0.18 && y <0.13 && y > -0.08)
                     {
-                        std::cout << "la piece " << pieceArray.markers.back().id << " est sur le plateau" << std::endl;
-                        int ligne = toLigne(z);
-                        int colonne = toColonne(y);
-                        std::cout << "ligne :  " << ligne << " colonne : " << colonne << std::endl;
+                        std::cout << "\nla piece " << pieceArray.markers.back().id << " est sur le plateau" << std::endl;
+                        std::cout << "ligne :  " << toLigne(z) << " colonne : " << toColonne(y) << std::endl;
+                        std::cout << "x : " << x << " y : " << y << " z : " << z << std::endl << std::endl;
 
                     }
-                    
+                
                     //ROS_INFO(" ");
                     //std::cout << "id_cube_i : " << msg.markers[i].id << std::endl;
                     //std::cout << "id_cube_back : " << pieceArray.markers.back().id << std::endl;
@@ -220,6 +219,8 @@ void chatterCallback(const aruco_msgs::MarkerArray& msg)
 
 
 int main(int argc, char** argv){
+
+    
 
     ros::init(argc, argv, "transform_broadcaster");
 
