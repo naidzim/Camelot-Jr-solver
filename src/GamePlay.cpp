@@ -158,7 +158,7 @@ void configXml(const char* xmlFileName)
             pID->Attribute("ymax", &SYmax);
         }
 
-       /* cout << "CIDmin = " << CIDmin << endl;
+        /*cout << "CIDmin = " << CIDmin << endl;
         cout << "CIDmax = " << CIDmax << endl;
         cout << "PIDmin = " << PIDmin << endl;
         cout << "PIDmax = " << PIDmax << endl;
@@ -199,7 +199,9 @@ void configXml(const char* xmlFileName)
     }
     else
     {
-        cout << "Cannot find xml file" << endl;
+        cout << endl;
+        cerr << "**** Error : Cannot find xml config file ****" << endl;
+        cout << endl;
     }
 }
 
@@ -273,7 +275,9 @@ void xtractImage(const aruco_msgs::MarkerArray& msg, vector<Piece> &pieceDep, ve
 
     unsigned int ppId, gpId, gpFId, bp1Id, bp1FId, bp2Id, bp2FId, op1Id, op2Id,rp1Id,rp2Id; // index in msg.markers array
     unsigned int bp1Rot=1, bp2Rot=1, gpRot=1;
-    configXml("config.xml"); //extraction des données du fichier config xml
+
+    configXml("/home/najib/catkin_ws/src/camelot_jr/config.xml"); //extraction des données du fichier config xml
+
     cout << "PuIDmin = " << PuIDmax << endl;
     cout << "PuIDmax = " << PuIDmin << endl;
     cout << "IDmax = " << PuIDmin << endl;
