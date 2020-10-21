@@ -5,6 +5,7 @@ using namespace std;
 
 
 
+/*Global variables */
 
 //Piece ID from config.xml file
 int CIDmax, CIDmin; //chevalier
@@ -21,6 +22,8 @@ int SocleID; // socle
 
 //rotations y axis range
 double R12Ymin, R12Ymax, R34Ymin, R34Ymax, R56Ymin, R56Ymax;
+
+//bord du socle
 double SXmin, SXmax, SYmin, SYmax;
 
 int GRotPaire, GRotImpaire;
