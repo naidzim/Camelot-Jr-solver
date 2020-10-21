@@ -180,7 +180,7 @@ include_directories(
 # add_executable(${PROJECT_NAME}_node src/camelot_jr_node.cpp)
 add_executable(position_cubes_node src/position_cubes.cpp)
 add_executable(braccio_control_node src/braccio_control.cpp)
-add_executable(cube_position_broadcast src/transform_broadcast.cpp)
+add_executable(cube_position_broadcast src/transform_broadcast.cpp ${CAMELOTSRC})
 add_executable(game_resolving_node src/game_resolving.cpp ${CAMELOTSRC})
 
 

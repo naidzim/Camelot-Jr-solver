@@ -61,5 +61,15 @@
         <id id=7></id>
         <x xmin=0.01 xmax=0.04></x>
         <y ymin=-0.9 ymax=0.13></y>
+        <l0 zmin=0.125 zmax=0.125></l0>
+        <l1 zmin=0.09 zmax=0.125></l1>
+        <l2 zmin=0.065 zmax=0.085></l2>
+        <l3 zmin=0.00 zmax=0.05></l3>
+        <c0 ymin=-0.08 ymax=-0.06></c0>
+        <c1 ymin=-0.045 ymax=-0.02></c1>
+        <c2 ymin=-0.006 ymax=0.004></c2>
+        <c3 ymin=0.03 ymax=0.04></c3>
+        <c4 ymin=0.065 ymax=0.075></c4>
+        <c5 ymin=-0.09 ymax=0.115></c5>
 	</socle>
 </config>

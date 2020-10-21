@@ -2,7 +2,8 @@
 #include "ros/ros.h"
 #include "ros/time.h"
 #include <cstdio>
-#include "camelot_jr/PieceAction.h"
+
+#include "camelot_jr/PieceAction.h" // msg type
 
 
 using namespace std;
@@ -15,43 +16,7 @@ using namespace std;
 
 void chatterCallback(const aruco_msgs::MarkerArray& msg)  // extraires les donn√©es de marker array
 {
-    ///#Debug 
-    
-    /*Board socle;
-    
-    
-    
-    Chevalier p1("Chevalier",1,1,5);
-    Princesse p2("Princess",1,3,0);
-    pieceDep.push_back(p1);
-    pieceDep.push_back(p2);
-    fillBoard(socle,pieceDep);
-    socle.print();
-    cout << "talle pieceSol : " << pieceSol.size() << endl;
-    cout << "Appuer sur entrer pour continuer" << endl;
-    int val;
-    cin >> val;
-    vector<Piece> pieceSolArray = resolution(socle,pieceSol);
-    
-    vector<Piece> sortedPieces = etapeResolution(pieceSolArray);
-    
-    int i = 0;
-    sound_play::SoundClient sc;
-    while ( ! sortedPieces.empty())
-    {
-        
-        string toSay = "Add " + sortedPieces[i].getNom() +" to position ";
-        toSay += to_string( sortedPieces[i].getPosX() )+ " " + to_string( sortedPieces[i].getPosY() );
-        toSay += " orientation " + to_string(sortedPieces[i].getRotation());
-        cout << toSay <<endl ;
-            sc.repeat("");
-            sc.repeat(toSay);
-            
-        
-       sc.stopAll();
-        sortedPieces.erase (sortedPieces.begin()); 
-    }*/
-
+   
 
     vector<Piece> pieceDep;    // tableau des piece de depart
     vector<Piece> pieceSol;    // tableau des pieces solution (necessaire pour la fonction resolution)
@@ -77,6 +42,7 @@ void chatterCallback(const aruco_msgs::MarkerArray& msg)  // extraires les donn√
 
 int main(int argc, char **argv)
 {
+    int a = toLigne(0.25);
     ros::init(argc, argv, "resolution");
     ros::Time::init();
     std_msgs::String msg;

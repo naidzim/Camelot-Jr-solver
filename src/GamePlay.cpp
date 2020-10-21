@@ -26,6 +26,10 @@ double R12Ymin, R12Ymax, R34Ymin, R34Ymax, R56Ymin, R56Ymax;
 //bord du socle
 double SXmin, SXmax, SYmin, SYmax;
 
+//lignes et colonnes delimitations
+double l0min, l0max, l1min, l1max, l2min, l2max, l3min, l3max;
+double c0min, c0max, c1min, c1max, c2min, c2max, c3min, c3max, c4min, c4max, c5min, c5max;
+
 int GRotPaire, GRotImpaire;
 int B1RotPaire, B1RotImpaire;
 int B2RotPaire, B2RotImpaire;
@@ -156,6 +160,37 @@ void configXml(const char* xmlFileName)
             pID = pSocle-> FirstChildElement("y");
             pID->Attribute("ymin", &SYmin);
             pID->Attribute("ymax", &SYmax);
+            pID = pSocle-> FirstChildElement("l0");
+            pID->Attribute("zmin", &l0min);
+            pID->Attribute("zmax", &l0max);
+            pID = pSocle-> FirstChildElement("l1");
+            pID->Attribute("zmin", &l1min);
+            pID->Attribute("zmax", &l1max);
+            pID = pSocle-> FirstChildElement("l2");
+            pID->Attribute("zmin", &l2min);
+            pID->Attribute("zmax", &l2max);
+            pID = pSocle-> FirstChildElement("l3");
+            pID->Attribute("zmin", &l3min);
+            pID->Attribute("zmax", &l3max);
+            pID = pSocle-> FirstChildElement("c0");
+            pID->Attribute("ymin", &c0min);
+            pID->Attribute("ymax", &c0max);
+            pID = pSocle-> FirstChildElement("c1");
+            pID->Attribute("ymin", &c1min);
+            pID->Attribute("ymax", &c1max);
+            pID = pSocle-> FirstChildElement("c2");
+            pID->Attribute("ymin", &c2min);
+            pID->Attribute("ymax", &c2max);
+            pID = pSocle-> FirstChildElement("c3");
+            pID->Attribute("ymin", &c3min);
+            pID->Attribute("ymax", &c3max);
+            pID = pSocle-> FirstChildElement("c4");
+            pID->Attribute("ymin", &c4min);
+            pID->Attribute("ymax", &c4max);
+            pID = pSocle-> FirstChildElement("c5");
+            pID->Attribute("ymin", &c5min);
+            pID->Attribute("ymax", &c5max);
+            
         }
 
         /*cout << "CIDmin = " << CIDmin << endl;
@@ -195,6 +230,11 @@ void configXml(const char* xmlFileName)
         cout << "SXmax = " << SXmax << endl;
         cout << "SYmin = " << SYmin << endl;
         cout << "SYmax = " << SYmax << endl;*/
+
+        cout << "l0min = " << l0min << endl;
+        cout << "l1min = " << l1min << endl;
+        cout << "l2min = " << l2min << endl;
+        cout << "l3min = " << l3min << endl;
 
     }
     else

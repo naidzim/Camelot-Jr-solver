@@ -1,7 +1,8 @@
 #include "Eigen/Dense"
 #include "Eigen/Core"
-
+#include "../include/GamePlay.h"
 #include "../include/Transformation.h"
+
 
 
 
@@ -99,12 +100,16 @@ void chatterCallback(const aruco_msgs::MarkerArray& msg)
                     if (x<0 && x >-0.18 && y <0.13 && y > -0.08)
                     {
                         std::cout << "la piece " << pieceArray.markers.back().id << " est sur le plateau" << std::endl;
+                        int ligne = toLigne(z);
+                        int colonne = toColonne(y);
+                        std::cout << "ligne :  " << ligne << " colonne : " << colonne << std::endl;
+
                     }
                     
                     //ROS_INFO(" ");
-                    std::cout << "id_cube_i : " << msg.markers[i].id << std::endl;
+                    //std::cout << "id_cube_i : " << msg.markers[i].id << std::endl;
                     //std::cout << "id_cube_back : " << pieceArray.markers.back().id << std::endl;
-                    std::cout << " position_array :\n " << "\n  x :" <<x<<"\n  y : " << y << "\n  z : " << z << std::endl; 
+                    //std::cout << " position_array :\n " << "\n  x :" <<x<<"\n  y : " << y << "\n  z : " << z << std::endl; 
                    // std::cout << " orientation_piece :\n " << "\n  x :" <<xo<<"\n  y : " << yo << "\n  z : " << zo << std::endl; 
                     
                 }    
