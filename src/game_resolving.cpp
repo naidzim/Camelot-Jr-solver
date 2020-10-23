@@ -73,6 +73,8 @@ int main(int argc, char **argv)
         aruco_msgs::MarkerArray::ConstPtr shareArray;
         shareArray = ros::topic::waitForMessage<aruco_msgs::MarkerArray>("/Piece_pose_array",nh);  // recuperer les markers une fois 
                                                                                                    // l'image est stable pour ne rater aucune piece
+        aruco_msgs::MarkerArray marray = *shareArray;
+
         if (shareArray != NULL)
         {
 
@@ -182,10 +184,10 @@ int main(int argc, char **argv)
         pieceSol.clear();
         xtractImage(marray,pieceDep,pieceSol);
 
-    }while (! pieceSol.empty())
+    }while (! pieceSol.empty());
 
 
-    if (shareArray != NULL ) 
+    /*if (shareArray != NULL ) 
     {
         
         aruco_msgs::MarkerArray marray = *shareArray;
@@ -305,7 +307,7 @@ int main(int argc, char **argv)
         ros::spinOnce();
         loop_rate.sleep();
 
-    }
+    }*/
 
 
     cout << "fin du programme" << endl;

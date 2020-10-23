@@ -7,7 +7,6 @@
 #include <iostream>
 #include "tinyxml.h"
 #include <aruco_msgs/MarkerArray.h>
-#include <sound_play/sound_play.h>
 #include "std_msgs/String.h"
 
 #include "Piece.h"

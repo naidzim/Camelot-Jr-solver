@@ -56,7 +56,6 @@
   <build_depend>geometry_msgs</build_depend>
   <build_depend>aruco_msgs</build_depend>
   <build_depend>aruco_ros</build_depend>
-  <build_depend>sound_play</build_depend>
   <build_depend>tinyxml</build_depend>
   <build_depend>cmake_modules</build_depend>
   
@@ -65,7 +64,6 @@
   <build_export_depend>std_msgs</build_export_depend>
   <build_export_depend>geometry_msgs</build_export_depend>
   <build_export_depend>aruco_msgs</build_export_depend>
-  <build_export_depend>sound_play</build_export_depend>
   <build_export_depend>tinyxml</build_export_depend>
   <build_export_depend>cmake_modules</build_export_depend>
 
@@ -74,7 +72,6 @@
   <exec_depend>std_msgs</exec_depend>
   <exec_depend>geometry_msgs</exec_depend>
   <exec_depend>aruco_msgs</exec_depend>
-  <exec_depend>sound_play</exec_depend>
   <exec_depend>tinyxml</exec_depend>
   <exec_depend>message_runtime</exec_depend>
   

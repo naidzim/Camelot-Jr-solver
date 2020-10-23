@@ -17,7 +17,6 @@ find_package(catkin REQUIRED COMPONENTS
   aruco_msgs
   cmake_modules
   tf
-  sound_play
 )
 
 find_package (Eigen3 REQUIRED)
