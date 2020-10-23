@@ -83,10 +83,17 @@ This project use ROS melodic distribution. Before you start you need to install 
 Please refer to ros tutorials to install and create the workspace : (http://wiki.ros.org/ROS/Tutorials)
 
 * Aruco
-```sh
-sudo apt-get install ros-melodic-aruco
-```
 
+Clone the Aruco git repository in your catkin workspace
+```sh
+$ cd catkin_ws/src/
+$ git clone https://github.com/pal-robotics/aruco_ros.git
+$ cd ../ && catkin_make
+```
+* Usb_cam 
+```sh
+sudo apt install ros-melodic-usb-cam
+```
 ### Installation
 
 1. Clone the repository in your catkin workspace
