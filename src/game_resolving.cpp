@@ -61,9 +61,11 @@ int main(int argc, char **argv)
     Princesse p2("Princess",1,3,0);
 
     Board socle;
-    vector<Piece> pieceDep;  // piece de debut du niveau
-    vector<Piece> pieceSol;  // oiece qui serviront a resoudre le niveau
-
+    vector<Piece> pieceDep;        // piece de debut du niveau
+    vector<Piece> pieceSol;        // oiece qui serviront a resoudre le niveau
+    vector<Piece> pieceSolArray;   // contient les pieces à deplacer 
+    vector<Piece> sortedPieces;    // tableau des pieces de solution ordonness
+ 
 
     do{
 
@@ -74,7 +76,7 @@ int main(int argc, char **argv)
         if (shareArray != NULL)
         {
 
-            // ***** Extraction depuis l'image *******
+    // ***** Extraction depuis l'image *******
             aruco_msgs::MarkerArray marray = *shareArray;
             xtractImage(marray,pieceDep,pieceSol); 
             pieceDep.push_back(p1); pieceDep.push_back(p2);
@@ -85,9 +87,9 @@ int main(int argc, char **argv)
 
             ros::Duration(5,0).sleep(); // sleep() de 5 sec
         
-            // ***** Recherche de solution *******
-            vector<Piece> pieceSolArray = resolution(socle,pieceSol);   // contient les pieces à deplacer 
-            vector<Piece> sortedPieces = etapeResolution(pieceSolArray); // tableau des pieces de solution ordonné
+    // ***** Recherche de solution *******
+            pieceSolArray = resolution(socle,pieceSol);   // contient les pieces à deplacer 
+            sortedPieces = etapeResolution(pieceSolArray); // tableau des pieces de solution ordonné
 
             if ( ! sortedPieces.empty() )
             {
@@ -111,32 +113,26 @@ int main(int argc, char **argv)
 
                 ros::spinOnce();
                 loop_rate.sleep();
-                ros::Duration(10,0).sleep(); // sleep for 10 sec 
+                ros::Duration(5,0).sleep(); // sleep for 10 sec 
             }
 
-            // ***** verification de l'action de l'utilisateur/joueur *****
-            shareArray = ros::topic::waitForMessage<aruco_msgs::MarkerArray>("/Piece_pose_array",nh);
-            marray = *shareArray;
-            pieceDep.clear();
-            pieceSol.clear();
-            xtractImage(marray,pieceDep,pieceSol);
-            cout << "taille de pieceDep : " << pieceDep.size() << endl;
-            bool found = false;
+    // ***** verification de l'action de l'utilisateur/joueur *****
+            bool found = false;                 // indique que la piece a ete trouvee
             while ( found == false)
             {
-                while ( !pieceDep.empty())  // on verifie d'abord la position de la piece posée puis son orientation
-                {
-                    shareArray = ros::topic::waitForMessage<aruco_msgs::MarkerArray>("/Piece_pose_array",nh);
-                    marray = *shareArray;
-                    pieceDep.clear();
-                    pieceSol.clear();
-                    xtractImage(marray,pieceDep,pieceSol);
+                shareArray = ros::topic::waitForMessage<aruco_msgs::MarkerArray>("/Piece_pose_array",nh);
+                marray = *shareArray;
+                pieceDep.clear();
+                pieceSol.clear();
+                xtractImage(marray,pieceDep,pieceSol);
 
-                    if (pieceDep[0].getNom() == sortedPieces[0].getNom())
+                while ( !pieceDep.empty()  && !found )  // on verifie d'abord la position de la piece posée puis son orientation
+                {
+                    if (pieceDep[0].getNom() == sortedPieces[0].getNom())  // piece trouvee
                     {
-                        if (pieceDep[0].getPosX() == sortedPieces[0].getPosX() && pieceDep[0].getPosY() == sortedPieces[0].getPosY())
+                        if (pieceDep[0].getPosX() == sortedPieces[0].getPosX() && pieceDep[0].getPosY() == sortedPieces[0].getPosY())  // Bonne position
                         {
-                            if (pieceDep[0].getRotation() == sortedPieces[0].getRotation())
+                            if (pieceDep[0].getRotation() == sortedPieces[0].getRotation())    // Bonne orientation
                             {
                                 
                                 found = true;
@@ -180,7 +176,13 @@ int main(int argc, char **argv)
 
         }
 
-    }while ()
+        shareArray = ros::topic::waitForMessage<aruco_msgs::MarkerArray>("/Piece_pose_array",nh);
+        marray = *shareArray;
+        pieceDep.clear();
+        pieceSol.clear();
+        xtractImage(marray,pieceDep,pieceSol);
+
+    }while (! pieceSol.empty())
 
 
     if (shareArray != NULL ) 
