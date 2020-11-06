@@ -80,10 +80,10 @@ Camelot-Jr automatic solver for robotic purposes.  and provides the solution of 
 
 * PieceAction.msg
 ```
-string nom #nom de la piece
-uint32 ligne 
-uint32 colonne
-uint32 rotation
+  string nom #nom de la piece
+  uint32 ligne 
+  uint32 colonne
+  uint32 rotation
 ```
 
 <!-- GETTING STARTED -->
@@ -206,4 +206,4 @@ Project Link: [https://github.com/naidzim/Camelot-Jr-solver](https://github.com/
 [license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/othneildrew
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: images/CamelotJrImage.jpeg
