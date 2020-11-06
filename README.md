@@ -70,8 +70,19 @@ Camelot-Jr automatic solver for robotic purposes.  and provides the solution of 
 * [ROS](https://www.ros.org/)
 * [Aruco](https://www.uco.es/investiga/grupos/ava/node/26)
 
+<!-- FEATURES -->
+## Features
+* Solves every Camelot Jr puzzle
+* Assists the users to find solution 
 
+## ROS API
+### Messages 
 
+* PieceAction.msg
+      string nom #nom de la piece
+      uint32 ligne 
+      uint32 colonne
+      uint32 rotation
 
 <!-- GETTING STARTED -->
 ## Getting Started
