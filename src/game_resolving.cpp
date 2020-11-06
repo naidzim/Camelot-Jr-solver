@@ -57,6 +57,9 @@ int main(int argc, char **argv)
    // aruco_msgs::MarkerArray::ConstPtr shareArray;
    // shareArray = ros::topic::waitForMessage<aruco_msgs::MarkerArray>("/Piece_pose_array",nh);  // recuperer les markers une fois l'image est stable pour ne rater aucune piece
     
+    /*** Position du chevalier et princess  ****/
+    // Chevalier p1 ("Chevalier",1, ligne, colonne)
+    // Princesse p2 ("Princess", 1 , ligne, colonne)
     Chevalier p1("Chevalier",1,2,5);
     Princesse p2("Princess",1,3,0);
 

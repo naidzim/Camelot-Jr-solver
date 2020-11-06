@@ -1609,23 +1609,10 @@ vector<Piece> resolution(Board &plateau, std::vector<Piece> const pieceSol)
 
     }
 
-    cout << "nb Piece ici = " << tableauPieceSize << endl;
-
-   /* for (int i = 0; i<tableauPieceSize; i++)
-    {
-        for (int j=0; j<tableauPiece[i].size() ; j++)
-        {
-            cout << "piece " << tableauPiece[i][j].getNom() << " rotation " << tableauPiece[i][j].getRotation() << endl;
-        }
-    }*/
-
     /** slot disponible **/
 
     vector<Coordonnes> espaceVide =  slotDispo(plateau);
-  /*  for (int k=0; k<espaceVide.size();k++)
-    {
-        cout << "( "<< espaceVide[k].x << ", " << espaceVide[k].y << " )" << endl;
-    }*/
+ 
 
     /*** RESOLUTION ***/
 
@@ -1639,11 +1626,40 @@ vector<Piece> resolution(Board &plateau, std::vector<Piece> const pieceSol)
 
 
     // construction des combinaison possible
+    vector<PieceCorr> combine1;
     vector<Cas2Piece> combine2;
     vector<Cas3Piece> combine3;
     vector<Cas4Piece> combine4;
 
-    if (tableauPieceSize == 2)
+    if (tableauPieceSize == 1)
+    {
+        cout << "nb espace vide = " << espaceVide.size() << endl; 
+        PieceCorr a;
+        if(tableauPiece[0][0].getId() == 6) // piece violet
+        {
+            a.p = tableauPiece[0][0];
+            for (int i = 0; i<espaceVide.size(); i++)
+            {
+                a.cor = espaceVide[i];
+                combine1.push_back(a);
+            }
+        }
+        else
+        {
+            for (int i=0; i<6; i++)
+            {
+                a.p = tableauPiece[0][i];
+                for (int j = 0; j<espaceVide.size(); j++)
+                {
+                    a.cor = espaceVide[j];
+                    combine1.push_back(a);
+                   
+                }
+            }
+        }
+    }
+
+    else if (tableauPieceSize == 2)
     {
         Cas2Piece poss;
         PieceCorr a,b;
@@ -1665,9 +1681,6 @@ vector<Piece> resolution(Board &plateau, std::vector<Piece> const pieceSol)
                             poss.p1 = a;
                             poss.p2 = b;
                             combine2.push_back(poss);
-                           // cout << "nb de combinaison" << combine.size() << endl;
-                            //cout << "i= " << i << " j= " << j << " k= " << k << " l= " << l << endl;
-
                         }
                     }
 
@@ -2098,27 +2111,54 @@ vector<Piece> resolution(Board &plateau, std::vector<Piece> const pieceSol)
 
 
 
-   // cout << "nb de combinaison " << combine2.size() << endl;
+   
 
+    if (tableauPieceSize == 1)
+    {
+        cout << "Dans le cas resolution 1 piece" << endl;
+        curseur = combine1.size();
+        while (! resolu && !combine1.empty())
+        {
+            cout << "dans le while " << endl;
+        
+            Board boardTest = plateau;
+            piece1 = combine1[curseur - 1].p;
+            cor1 = combine1[curseur - 1].cor;
+            ok = posable(piece1,boardTest,cor1);
 
+            if(ok) // piece posable
+            {
+                cout << "piece posable" << endl;
+                piece1.setPosX(cor1.x);
+                piece1.setPosY(cor1.y);
+                boardTest.ajouterPiece(piece1);
+                resolu = testConfig(boardTest);
+            }
+            if (resolu)
+            {
+                vector<Piece> solArray;
+                solArray.push_back(piece1);
+                cout << "ok j'ai trouve" << endl;
+                boardTest.print();
+                return solArray;
+            }
+            combine1.pop_back();
+            curseur = combine1.size();
+        }
+
+    }
     if (tableauPieceSize == 2)
     {
         curseur = combine2.size();
         while (!resolu && !combine2.empty() )
         {
-            cout << "iteration : " << ++iteration << endl;
             Board boardTest = plateau; // reprendre le plateau de depart a chaque iteration
 
             piece1 = combine2[curseur-1].p1.p;
             cor1 = combine2[curseur-1].p1.cor;
             piece2 = combine2[curseur-1].p2.p;
             cor2 = combine2[curseur-1].p2.cor;
-            //cout << "    " << piece1.getNom() << " " << piece1.getRotation() << " (" << cor1.x << ","<< cor1.y<<")" << endl;
-            //cout << "    " << piece2.getNom() << " " << piece2.getRotation() << " (" << cor2.x << ","<< cor2.y<<")" << endl;
-
-            //cout  << " (" << combine[curseur].p1.cor.x << ","<< combine[curseur].p1.cor.y<<")" << endl;
-            //cout << " (" << combine[curseur].p2.cor.x << ","<<combine[curseur].p2.cor.y<<")" << endl << endl;
-           ok =  posable(piece1,boardTest,cor1);
+            ok =  posable(piece1,boardTest,cor1);
 
            if (ok) // piece 1 posable
            {

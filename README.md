@@ -63,7 +63,7 @@
 
 [![Product Name Screen Shot][product-screenshot]]
 
-Camelot-Jr automatic solver for robotic purposes.  and provides the solution of the 48 game puzzles and others if any.
+Camelot-Jr automatic solver for robotic purposes. it provides the solution of the 48 game puzzles and others if any.
 
 ### Built With
 
@@ -125,8 +125,11 @@ $ source /opt/ros/melodic/setup.bash
 $ source catkin_ws/devel/setup.bash
 ```
 4. Make sure your webcam is connected to the computer
+
 <!-- USAGE EXAMPLES -->
 ## Usage
+For each level, the knight and princess pieces starting positions should be indicated manually by modifing src/game_resolving.cpp file
+
 ### Terminal 1
 Open a new terminal in which we are going to launch the ROS core and the Aruco/Camera nodes
 
