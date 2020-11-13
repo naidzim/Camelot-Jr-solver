@@ -1179,7 +1179,6 @@ int testConfig(Board &plateau)
     resolu = CJoinP(plateau);
     while(! resolu) {
         ok = avancer(plateau);
-        //plateau.print();
         if (!ok) return 0;
         resolu = CJoinP(plateau);
 
@@ -1704,9 +1703,6 @@ vector<Piece> resolution(Board &plateau, std::vector<Piece> const pieceSol)
                             poss.p1 = a;
                             poss.p2 = b;
                             combine2.push_back(poss);
-                           //cout << "nb de combinaison" << combine.size() << endl;
-                            //cout << "i= " << i << " j= " << j << " k= " << k << " l= " << l << endl;
-
                         }
                     }
 
@@ -1729,8 +1725,6 @@ vector<Piece> resolution(Board &plateau, std::vector<Piece> const pieceSol)
                 {
                     for (int l = 0; l<tableauPiece[2].size();l++)
                     {
-
-
                         a.p = tableauPiece[0][0];
                         b.p = tableauPiece[1][j];
                         c.p = tableauPiece[2][l];
@@ -1748,8 +1742,6 @@ vector<Piece> resolution(Board &plateau, std::vector<Piece> const pieceSol)
                                     poss.p2 = b;
                                     poss.p3 = c;
                                     combine3.push_back(poss);
-                                   // cout << "nb de combinaison" << combine.size() << endl;
-                                    //cout << "i= " << i << " j= " << j << " k= " << k << " l= " << l << endl;
                                 }
 
                             }
@@ -1786,8 +1778,6 @@ vector<Piece> resolution(Board &plateau, std::vector<Piece> const pieceSol)
                                     poss.p2 = b;
                                     poss.p3 = c;
                                     combine3.push_back(poss);
-                                   // cout << "nb de combinaison" << combine.size() << endl;
-                                    //cout << "i= " << i << " j= " << j << " k= " << k << " l= " << l << endl;
                                 }
 
                             }
@@ -1842,7 +1832,6 @@ vector<Piece> resolution(Board &plateau, std::vector<Piece> const pieceSol)
                                                 int ok1,ok2,ok3,ok4;
                                                 curseur = combine4.size();
 
-                                                    //cout << "iteration : " << ++iteration << endl;
                                                     Board boardTest = plateau; // reprendre le plateau de depart a chaque iteration
 
                                                     piece1 = poss.p1.p;
@@ -1853,12 +1842,7 @@ vector<Piece> resolution(Board &plateau, std::vector<Piece> const pieceSol)
                                                     cor3 = poss.p3.cor;
                                                     piece4 = poss.p4.p;
                                                     cor4 = poss.p4.cor;
-
-
-                                                    //cout << "  "<< piece1.getNom() << " " << piece1.getRotation() << " (" << cor1.x << "," << cor1.y << ")" << endl;
-                                                    //cout << "  "<< piece2.getNom() << " " << piece2.getRotation() << " (" << cor2.x << "," << cor2.y << ")" << endl;
-                                                    //cout << "  "<< piece3.getNom() << " " << piece3.getRotation() << " (" << cor3.x << "," << cor3.y << ")" << endl << endl;;
-
+                                               
                                                    ok1 =  posable(piece1,boardTest,cor1);
                                                    ok2 =  posable(piece2,boardTest,cor2);
                                                    ok3 =  posable(piece3,boardTest,cor3);
@@ -2008,8 +1992,7 @@ vector<Piece> resolution(Board &plateau, std::vector<Piece> const pieceSol)
                                                                piece3.setPosX(cor3.x);
                                                                piece3.setPosY(cor3.y);
                                                                boardTest.ajouterPiece(piece3);
-                                                               //boardTest.print();
-                                                               //boardTest.printDebug();
+                                                               
 
                                                                resolu = testConfig(boardTest);
 
@@ -2025,8 +2008,7 @@ vector<Piece> resolution(Board &plateau, std::vector<Piece> const pieceSol)
                                                            {
                                                                piece1.setPosX(cor1.x);
                                                                piece1.setPosY(cor1.y);
-                                                               boardTest.ajouterPiece(piece1);
-                                                               //boardTest.print();
+                                                               boardTest.ajouterPiece(piece1);                                                            
                                                                resolu = testConfig(boardTest);
 
                                                            }
@@ -2054,10 +2036,7 @@ vector<Piece> resolution(Board &plateau, std::vector<Piece> const pieceSol)
 
                                                                piece2.setPosX(cor2.x);
                                                                piece2.setPosY(cor2.y);
-                                                               boardTest.ajouterPiece(piece2);
-                                                               //boardTest.print();
-                                                               //boardTest.printDebug();
-
+                                                               boardTest.ajouterPiece(piece2);                                                               
                                                                resolu = testConfig(boardTest);
 
                                                            }
@@ -2073,7 +2052,6 @@ vector<Piece> resolution(Board &plateau, std::vector<Piece> const pieceSol)
                                                                piece1.setPosX(cor1.x);
                                                                piece1.setPosY(cor1.y);
                                                                boardTest.ajouterPiece(piece1);
-                                                               //boardTest.print();
                                                                resolu = testConfig(boardTest);
 
                                                            }
@@ -2119,8 +2097,6 @@ vector<Piece> resolution(Board &plateau, std::vector<Piece> const pieceSol)
         curseur = combine1.size();
         while (! resolu && !combine1.empty())
         {
-            cout << "dans le while " << endl;
-        
             Board boardTest = plateau;
             piece1 = combine1[curseur - 1].p;
             cor1 = combine1[curseur - 1].cor;
@@ -2128,7 +2104,7 @@ vector<Piece> resolution(Board &plateau, std::vector<Piece> const pieceSol)
 
             if(ok) // piece posable
             {
-                cout << "piece posable" << endl;
+                
                 piece1.setPosX(cor1.x);
                 piece1.setPosY(cor1.y);
                 boardTest.ajouterPiece(piece1);
@@ -2173,9 +2149,6 @@ vector<Piece> resolution(Board &plateau, std::vector<Piece> const pieceSol)
                    piece2.setPosX(cor2.x);
                    piece2.setPosY(cor2.y);
                    boardTest.ajouterPiece(piece2);
-
-                   //boardTest.print();
-                   //boardTest.printDebug();
                    resolu = testConfig(boardTest);
 
                }
@@ -2196,9 +2169,6 @@ vector<Piece> resolution(Board &plateau, std::vector<Piece> const pieceSol)
                        piece1.setPosX(cor1.x);
                        piece1.setPosY(cor1.y);
                        boardTest.ajouterPiece(piece1);
-                      // boardTest.print();
-                       //boardTest.printDebug();
-
                        resolu = testConfig(boardTest);
 
                    }
@@ -2226,7 +2196,6 @@ vector<Piece> resolution(Board &plateau, std::vector<Piece> const pieceSol)
         curseur = combine3.size();
         while (!resolu && !combine3.empty() )
         {
-            //cout << "iteration : " << ++iteration << endl;
             Board boardTest = plateau; // reprendre le plateau de depart a chaque iteration
 
             piece1 = combine3[curseur-1].p1.p;
@@ -2235,11 +2204,6 @@ vector<Piece> resolution(Board &plateau, std::vector<Piece> const pieceSol)
             cor2 = combine3[curseur-1].p2.cor;
             piece3 = combine3[curseur-1].p3.p;
             cor3 = combine3[curseur-1].p3.cor;
-
-
-            //cout << "  "<< piece1.getNom() << " " << piece1.getRotation() << " (" << cor1.x << "," << cor1.y << ")" << endl;
-            //cout << "  "<< piece2.getNom() << " " << piece2.getRotation() << " (" << cor2.x << "," << cor2.y << ")" << endl;
-            //cout << "  "<< piece3.getNom() << " " << piece3.getRotation() << " (" << cor3.x << "," << cor3.y << ")" << endl << endl;;
 
            ok1 =  posable(piece1,boardTest,cor1);
            ok2 =  posable(piece2,boardTest,cor2);
@@ -2265,8 +2229,6 @@ vector<Piece> resolution(Board &plateau, std::vector<Piece> const pieceSol)
                        piece3.setPosX(cor3.x);
                        piece3.setPosY(cor3.y);
                        boardTest.ajouterPiece(piece3);
-                       //boardTest.print();
-                       //boardTest.printDebug();
                        resolu = testConfig(boardTest);
                    }
 
@@ -2309,9 +2271,6 @@ vector<Piece> resolution(Board &plateau, std::vector<Piece> const pieceSol)
                        piece3.setPosX(cor3.x);
                        piece3.setPosY(cor3.y);
                        boardTest.ajouterPiece(piece3);
-                       //boardTest.print();
-                       //boardTest.printDebug();
-
                        resolu = testConfig(boardTest);
 
                    }
@@ -2327,7 +2286,6 @@ vector<Piece> resolution(Board &plateau, std::vector<Piece> const pieceSol)
                        piece1.setPosX(cor1.x);
                        piece1.setPosY(cor1.y);
                        boardTest.ajouterPiece(piece1);
-                       //boardTest.print();
                        resolu = testConfig(boardTest);
 
                    }
@@ -2356,9 +2314,6 @@ vector<Piece> resolution(Board &plateau, std::vector<Piece> const pieceSol)
                        piece2.setPosX(cor2.x);
                        piece2.setPosY(cor2.y);
                        boardTest.ajouterPiece(piece2);
-                       //boardTest.print();
-                       //boardTest.printDebug();
-
                        resolu = testConfig(boardTest);
 
                    }
@@ -2374,7 +2329,6 @@ vector<Piece> resolution(Board &plateau, std::vector<Piece> const pieceSol)
                        piece1.setPosX(cor1.x);
                        piece1.setPosY(cor1.y);
                        boardTest.ajouterPiece(piece1);
-                       //boardTest.print();
                        resolu = testConfig(boardTest);
 
                    }
@@ -2394,7 +2348,6 @@ vector<Piece> resolution(Board &plateau, std::vector<Piece> const pieceSol)
               
                return solArray;
            }
-          //combine.erase (combine.begin() + curseur); //erase de index-th element of tab
           combine3.pop_back();
           curseur = combine3.size();
         }
@@ -2406,7 +2359,6 @@ vector<Piece> resolution(Board &plateau, std::vector<Piece> const pieceSol)
         curseur = combine4.size();
         while (!resolu && !combine4.empty() )
         {
-            //cout << "iteration : " << ++iteration << endl;
             Board boardTest = plateau; // reprendre le plateau de depart a chaque iteration
 
             piece1 = combine4[curseur-1].p1.p;
@@ -2417,11 +2369,6 @@ vector<Piece> resolution(Board &plateau, std::vector<Piece> const pieceSol)
             cor3 = combine4[curseur-1].p3.cor;
             piece4 = combine4[curseur-1].p4.p;
             cor4 = combine4[curseur-1].p4.cor;
-
-
-            //cout << "  "<< piece1.getNom() << " " << piece1.getRotation() << " (" << cor1.x << "," << cor1.y << ")" << endl;
-            //cout << "  "<< piece2.getNom() << " " << piece2.getRotation() << " (" << cor2.x << "," << cor2.y << ")" << endl;
-            //cout << "  "<< piece3.getNom() << " " << piece3.getRotation() << " (" << cor3.x << "," << cor3.y << ")" << endl << endl;;
 
            ok1 =  posable(piece1,boardTest,cor1);
            ok2 =  posable(piece2,boardTest,cor2);

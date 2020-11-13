@@ -62,6 +62,7 @@ void chatterCallback(const aruco_msgs::MarkerArray& msg)
     
     if (found_marker(msg,7,mSocle))  // on cherche le marker de ref (socle)
     {   
+        configXml("/home/najib/catkin_ws/src/camelot_jr/config.xml"); //extraction des données du fichier config xml
         //ROS_INFO("On voit le marker 7 (socle) du repere de reference  et nb_markers = %d",nb_markers);
             // on calcule le repere de la camera par rapport au repere scole.
             Transformation  T1InCamera(mSocle.pose.pose); // repere du marker socle dans le repere de la camera
@@ -86,10 +87,6 @@ void chatterCallback(const aruco_msgs::MarkerArray& msg)
                     pieceMarker.pose.pose.orientation.y = TWorld.rotation(1);
                     pieceMarker.pose.pose.orientation.z = TWorld.rotation(2);
                     pieceArray.markers.push_back(pieceMarker);
-
-                    /*float x = pieceMarker.pose.pose.position.x;
-                    float y = pieceMarker.pose.pose.position.y;
-                    float z = pieceMarker.pose.pose.position.z;*/
 
                     float x = pieceArray.markers.back().pose.pose.position.x;
                     float y = pieceArray.markers.back().pose.pose.position.y;
@@ -139,9 +136,6 @@ void chatterCallback(const aruco_msgs::MarkerArray& msg)
                     pieceMarker.pose.pose.orientation.z = TWorld.rotation(2);
                     pieceArray.markers.push_back(pieceMarker);
 
-                    /*float x = pieceMarker.pose.pose.position.x;
-                    float y = pieceMarker.pose.pose.position.y;
-                    float z = pieceMarker.pose.pose.position.z;*/
                     float x = pieceArray.markers.back().pose.pose.position.x;
                     float y = pieceArray.markers.back().pose.pose.position.y;
                     float z = pieceArray.markers.back().pose.pose.position.z;
@@ -167,49 +161,6 @@ void chatterCallback(const aruco_msgs::MarkerArray& msg)
         
     }
                  
-             
-    
-    
-  /*  if (ref_marker_found && nb_markers > 1 )
-    {
-        pieceArray.markers.clear();
-        for (int i=0;i<nb_markers;i++)
-        {
-            if (msg.markers[i].id != 7)
-            {
-                aruco_msgs::Marker pieceMarker;
-
-                pieceMarker.id = msg.markers[i].id;
-                const aruco_msgs::Marker& m = msg.markers[i];
-                Transformation  Trans(m.pose.pose);
-                Transformation  TWorld = TCamera*Trans;
-
-                pieceMarker.pose.pose.position.x = TWorld.position(0);
-                pieceMarker.pose.pose.position.y = TWorld.position(1);
-                pieceMarker.pose.pose.position.z = TWorld.position(2);
-                pieceMarker.pose.pose.orientation.x = TWorld.rotation(0);
-                pieceMarker.pose.pose.orientation.y = TWorld.rotation(1);
-                pieceMarker.pose.pose.orientation.z = TWorld.rotation(2);
-                pieceArray.markers.push_back(pieceMarker);
-
-                float x = pieceMarker.pose.pose.position.x;
-                float y = pieceMarker.pose.pose.position.y;
-                float z = pieceMarker.pose.pose.position.z;
-                if (x<0.04 && x > 0.01 && y <0.13 && y > -0.9)
-                {
-                    //std::cout << "la piece " << pieceArray.markers[i].id << " est sur le plateau" << std::endl;
-                }
-                
-            // ROS_INFO("id_cube : %d\n  x : %f\n  y : %f\n  z : %f\n" ,msg.markers[i].id,x,y,z);
-                std::string name = "frame_marker"+std::to_string(m.id);
-                frame_vector.push_back(tf::StampedTransform(TWorld.convertToTF(), ros::Time::now(),"map",name));
-            }    
-        }
-    }*/
-
-    
- 
-    // envoie les informations sur /tf
     
 }
 
@@ -219,8 +170,6 @@ void chatterCallback(const aruco_msgs::MarkerArray& msg)
 
 
 int main(int argc, char** argv){
-
-    
 
     ros::init(argc, argv, "transform_broadcaster");
 

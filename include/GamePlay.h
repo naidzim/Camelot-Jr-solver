@@ -50,6 +50,7 @@ struct Cas4Piece{
 };
 
 
+void configXml(const char* xmlFileName);
 int toLigne(float z);
 int toColonne(float y);
 void xtractImage(const aruco_msgs::MarkerArray& msg, vector<Piece> &pieceDep, vector<Piece> &pieceSol);
