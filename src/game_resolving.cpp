@@ -2,6 +2,7 @@
 #include "ros/ros.h"
 #include "ros/time.h"
 #include <cstdio>
+#include <string>
 
 #include "camelot_jr/PieceAction.h" // msg type
 
@@ -12,22 +13,56 @@ using namespace std;
 int main(int argc, char **argv)
 { 
     ros::init(argc, argv, "resolution");
-    ros::Time::init();
-    std_msgs::String msg;
-
-    ros::NodeHandle nh;
+    ros::Time::init(); 
+    ros::NodeHandle nh("~");
     ros::Publisher speach_pub = nh.advertise<std_msgs::String>("/speech", 1000);
     ros::Publisher action_pub = nh.advertise<camelot_jr::PieceAction>("/PieceSolution", 1000);
     ros::Rate loop_rate(10);
+
+    int Cpos, Ppos;
+    nh.getParam("Cpos", Cpos);
+    nh.getParam("Ppos", Ppos);
+
+    if( ! (nh.hasParam("Cpos") && nh.hasParam("Ppos")) )
+    {
+        cout << "Rien saisie" << endl;
+        nh.deleteParam("Cpos");
+        nh.deleteParam("Ppos");
+        return 1;
+    }
+    
        
+    
+else {
+
+    std_msgs::String msg;
+    int pLig, pCol, cLig, cCol;
+    pLig = Ppos / 10;
+    pCol = Ppos % 10;
+    cLig = Cpos / 10;
+    cCol = Cpos % 10; 
+    Chevalier p1("Chevalier",1,cLig,cCol);
+    Princesse p2("Princess",1,pLig,pCol);
+    nh.deleteParam("Cpos");
+    nh.deleteParam("Ppos");
+    cout << "Chevalier ligne : " << cLig << " colonne : " << cCol << endl;
+    cout << "Princess ligne : " << pLig << " colonne : " << pCol << endl;
+    Board socle;
+    vector<Piece> pieceDep;  
+    pieceDep.push_back(p1); pieceDep.push_back(p2);
+            fillBoard(socle,pieceDep);    // remplissage de la matrice 
+            socle.print();                // affichage 
+    
     /*** Position du chevalier et princess  ****/
     // Chevalier p1 ("Chevalier",1, ligne, colonne)
     // Princesse p2 ("Princess", 1 , ligne, colonne)
-    Chevalier p1("Chevalier",1,2,5);
-    Princesse p2("Princess",1,3,0);
 
-    Board socle;
-    vector<Piece> pieceDep;        // piece de debut du niveau
+    
+    //Chevalier p1("Chevalier",1,2,5);
+    //Princesse p2("Princess",1,3,0);
+
+    //Board socle;
+    //vector<Piece> pieceDep;        // piece de debut du niveau
     vector<Piece> pieceSol;        // piece qui serviront a resoudre le niveau
     vector<Piece> pieceSolArray;   // contient les pieces à deplacer 
     vector<Piece> sortedPieces;    // tableau des pieces de solution ordonness
@@ -41,7 +76,12 @@ int main(int argc, char **argv)
     do{
         pieceDep.clear();
         pieceSol.clear();
-        if (shareArray != NULL)
+        if (shareArray == NULL )
+        { 
+            cout << "shareArray null " << endl;
+            return 1;
+        }
+        else  // shareArray != NULL
         {
 
     // ***** Extraction depuis l'image *******
@@ -153,6 +193,7 @@ int main(int argc, char **argv)
     }while (! pieceSol.empty());
 
     cout << "fin du programme" << endl;
+}
 
     return 0;
 }
