@@ -65,12 +65,17 @@ int main(int argc, char **argv)
 
     Board socle;
     vector<Piece> pieceDep;        // piece de debut du niveau
-    vector<Piece> pieceSol;        // oiece qui serviront a resoudre le niveau
+    vector<Piece> pieceSol;        // pieces qui serviront a resoudre le niveau
     vector<Piece> pieceSolArray;   // contient les pieces à deplacer 
     vector<Piece> sortedPieces;    // tableau des pieces de solution ordonness
  
+// **** Acquisition des donnees ****
+        aruco_msgs::MarkerArray::ConstPtr shareArray;
+        shareArray = ros::topic::waitForMessage<aruco_msgs::MarkerArray>("/Piece_pose_array",nh);  // recuperer les markers une fois 
+                                                                                                   // l'image est stable pour ne rater aucune piece
+        aruco_msgs::MarkerArray marray = *shareArray;
 
-    do{
+   /* do{
 
         // **** Acquisition des donnees ****
         aruco_msgs::MarkerArray::ConstPtr shareArray;
@@ -187,10 +192,10 @@ int main(int argc, char **argv)
         pieceSol.clear();
         xtractImage(marray,pieceDep,pieceSol);
 
-    }while (! pieceSol.empty());
+    }while (! pieceSol.empty()); */
 
 
-    /*if (shareArray != NULL ) 
+    if (shareArray != NULL ) 
     {
         
         aruco_msgs::MarkerArray marray = *shareArray;
@@ -310,7 +315,7 @@ int main(int argc, char **argv)
         ros::spinOnce();
         loop_rate.sleep();
 
-    }*/
+    }
 
 
     cout << "fin du programme" << endl;

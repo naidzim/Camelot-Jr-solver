@@ -482,11 +482,11 @@ void xtractImage(const aruco_msgs::MarkerArray& msg, vector<Piece> &pieceDep, ve
             {
                 ligne = toLigne(msg.markers[bp1FId].pose.pose.position.z);
                 colonne = toColonne(msg.markers[bp1FId].pose.pose.position.y);
-                pieceDep.push_back(BluePiece("piece bleue",bp1Rot,ligne,colonne));
+                pieceDep.push_back(BluePiece("piece bleue1",bp1Rot,ligne,colonne));
             }
             else
             {
-                pieceSol.push_back(BluePiece("piece bleue",1,0,0));
+                pieceSol.push_back(BluePiece("piece bleue1",1,0,0));
             }
         }
         else
@@ -497,11 +497,11 @@ void xtractImage(const aruco_msgs::MarkerArray& msg, vector<Piece> &pieceDep, ve
             {
                 ligne = toLigne(msg.markers[bp1Id].pose.pose.position.z);
                 colonne = toColonne(msg.markers[bp1Id].pose.pose.position.y);
-                pieceDep.push_back(BluePiece("piece bleue",bp1Rot,ligne,colonne));
+                pieceDep.push_back(BluePiece("piece bleue1",bp1Rot,ligne,colonne));
             }
             else
             {
-                pieceSol.push_back(BluePiece("piece bleue",1,0,0));
+                pieceSol.push_back(BluePiece("piece bleue1",1,0,0));
             }
         }
         
@@ -518,11 +518,11 @@ void xtractImage(const aruco_msgs::MarkerArray& msg, vector<Piece> &pieceDep, ve
             {
                 ligne = toLigne(msg.markers[bp2FId].pose.pose.position.z);
                 colonne = toColonne(msg.markers[bp2FId].pose.pose.position.y);
-                pieceDep.push_back(BluePiece("piece bleue",bp2Rot,ligne,colonne));
+                pieceDep.push_back(BluePiece("piece bleue2",bp2Rot,ligne,colonne));
             }
             else
             {
-                pieceSol.push_back(BluePiece("piece bleue",1,0,0));
+                pieceSol.push_back(BluePiece("piece bleue2",1,0,0));
             }
         }
         else
@@ -533,11 +533,11 @@ void xtractImage(const aruco_msgs::MarkerArray& msg, vector<Piece> &pieceDep, ve
             {
                 ligne = toLigne(msg.markers[bp2Id].pose.pose.position.z);
                 colonne = toColonne(msg.markers[bp2Id].pose.pose.position.y);
-                pieceDep.push_back(BluePiece("piece bleue",bp2Rot,ligne,colonne));
+                pieceDep.push_back(BluePiece("piece bleue2",bp2Rot,ligne,colonne));
             }
             else
             {
-                pieceSol.push_back(BluePiece("piece bleue",1,0,0));
+                pieceSol.push_back(BluePiece("piece bleue2",1,0,0));
             }
         }
         
