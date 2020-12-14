@@ -61,7 +61,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]]
+[Product Name Screen Shot][product-screenshot]
 
 Camelot Jr automatic solver for robotic purposes. It provides the solution of the 48 game puzzles and others if any.
 
@@ -74,7 +74,7 @@ Camelot Jr automatic solver for robotic purposes. It provides the solution of th
 ## Features
 * Solves every Camelot Jr puzzle
 * Assists the users to find solution 
-
+* Provides the start and destination coordinates of the piece so that the robots can use it for pick and place.
 ## ROS API
 ### Messages 
 
@@ -84,6 +84,11 @@ Camelot Jr automatic solver for robotic purposes. It provides the solution of th
   uint32 ligne 
   uint32 colonne
   uint32 rotation
+```
+* MouveCoords.msg
+```
+  geometry_msgs/Pose depart
+  geometry_msgs/Pose destination
 ```
 
 <!-- GETTING STARTED -->
