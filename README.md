@@ -35,7 +35,7 @@
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Camelot-Jr Solver</h3>
+  <h3 align="center">Camelot Jr Solver</h3>
 
 </p>
 
@@ -63,7 +63,7 @@
 
 [![Product Name Screen Shot][product-screenshot]]
 
-Camelot-Jr automatic solver for robotic purposes. it provides the solution of the 48 game puzzles and others if any.
+Camelot Jr automatic solver for robotic purposes. It provides the solution of the 48 game puzzles and others if any.
 
 ### Built With
 
@@ -88,12 +88,12 @@ Camelot-Jr automatic solver for robotic purposes. it provides the solution of th
 
 <!-- GETTING STARTED -->
 ## Getting Started
-The programm runs on ROS environement and Uses Aruco augmented reality libraries for object detection (you may need a webcamera).
+The program runs on ROS environement and uses Aruco augmented reality libraries for object detection (you may need a webcamera).
 
 ### Prerequisites
 
 This project use ROS melodic distribution. Before you start you need to install it and create a catkin workspace.
-Please refer to ros tutorials to install and create the workspace : (http://wiki.ros.org/ROS/Tutorials)
+Please refer to ROS tutorials to install and create the workspace : (http://wiki.ros.org/ROS/Tutorials)
 
 * Aruco
 
@@ -139,11 +139,11 @@ Run:
 $ roslaunch camelot_jr ArucoWebCam.launch
 ```
 
-A new windows will open showing the sight of your camera using Aruco. Make sure that it detects and localize the "Ar markers" on Camelot-jr pieces. 
+A new window will open showing the sight of your camera using Aruco. Make sure that it detects and localize the "Ar markers" on Camelot Jr pieces. 
 
 ### Terminal 2
 
-On this terminal we are going to run the Camelot-Jr programm
+On this terminal we are going to run the Camelot-Jr program
 
 Run :
 
