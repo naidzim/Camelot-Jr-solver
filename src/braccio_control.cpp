@@ -26,7 +26,7 @@ int main(int argc, char** argv)
 
   ros::NodeHandle n;
 
-  ros::Publisher pub = n.advertise<std_msgs::UInt8MultiArray>("joint_array", 6);
+  ros::Publisher pub = n.advertise<std_msgs::UInt8MultiArray>("/braccio_arm/joint_angles", 6);
   
   ros::Rate loop_rate(10);
 

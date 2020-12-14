@@ -2608,3 +2608,40 @@ vector<Piece> resolution(Board &plateau, std::vector<Piece> const pieceSol)
 }
 
 
+camelot_jr::MouveCoords toPose( int ligne, int colonne)
+{
+    camelot_jr::MouveCoords var;
+    double z,y,x;
+    x = (SXmin + SXmax) / 2.0;
+
+    switch (ligne) {
+        case 0: z = (l0min + l0max ) / 2.0 ;
+                break;
+        case 1: z = (l1min + l1max ) / 2.0 ;
+                break;
+        case 2: z = (l1min + l2max ) / 2.0 ;
+                break;
+        case 3: z = (l3min + l3max ) / 2.0 ;
+                break;
+    }
+
+    switch (colonne) {
+        case 0: y = (c0min + c0max ) / 2.0 ;
+                break;
+        case 1: y = (c1min + c1max ) / 2.0 ;
+                break;
+        case 2: y = (c1min + c2max ) / 2.0 ;
+                break;
+        case 3: y = (c3min + c3max ) / 2.0 ;
+                break;
+        case 4: y = (c4min + c4max ) / 2.0 ;
+                break;
+        case 5: y = (c5min + c5max ) / 2.0 ;
+                break;                
+    }
+
+    var.destination.position.x = x;
+    var.destination.position.y = y;
+    var.destination.position.z = z;
+    return var;
+}

@@ -18,6 +18,7 @@
 #include "Princesse.h"
 #include "Chevalier.h"
 #include "RedPiece.h"
+#include "camelot_jr/MouveCoords.h" // coord de la piece a deplacer
 
 
 
@@ -68,5 +69,6 @@ vector<Piece>* construcPossibilites(std::vector<Piece> const pieceSol);
 vector<Coordonnes> slotDispo(Board &plateau);
 int posable(Piece &p, Board &plateau, Coordonnes cor);
 vector<Piece> etapeResolution(vector<Piece> const pieceSol);
+camelot_jr::MouveCoords toPose(int ligne, int colonne);
 
 #endif // GAMEPLAY_H
