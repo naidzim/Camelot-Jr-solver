@@ -61,7 +61,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[Product Name Screen Shot][product-screenshot]
+[![Product Name Screen Shot][product-screenshot]]
 
 Camelot Jr automatic solver for robotic purposes. It provides the solution of the 48 game puzzles and others if any.
 
