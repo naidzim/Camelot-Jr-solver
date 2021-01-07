@@ -2,6 +2,7 @@
 #include "std_msgs/MultiArrayLayout.h"
 #include "std_msgs/MultiArrayDimension.h"
 #include "std_msgs/UInt8MultiArray.h"
+#include "std_msgs/Float64MultiArray.h"
 
 
 #define PI 3.1416
@@ -17,8 +18,10 @@ using namespace std;
 
 int main(int argc, char** argv)
 {
-  std_msgs::UInt8MultiArray array;
-  array.data = {100, 100, 100, 100, 100, 100}; // init les position des articulation
+
+  double pi = 2*asin(1);
+  std_msgs::Float64MultiArray array;
+  array.data = {1.5, 1.5, 1.5, 1.5, 1.5, 1.5}; // init les position des articulation
 
   ros::init(argc,argv,"braccio_control");
   
@@ -26,13 +29,14 @@ int main(int argc, char** argv)
 
   ros::NodeHandle n;
 
-  ros::Publisher pub = n.advertise<std_msgs::UInt8MultiArray>("/braccio_arm/joint_angles", 6);
+  ros::Publisher pub = n.advertise<std_msgs::Float64MultiArray>("/braccio_arm/joint_angles", 10);
+  //ros::Publisher pub = n.advertise<std_msgs::Float64MultiArray>("/braccio_arm/joint_angles", 10);
   
   ros::Rate loop_rate(10);
 
   pub.publish(array);
- ros::spinOnce();
-    loop_rate.sleep();
+  ros::spinOnce();
+  loop_rate.sleep();
 
   int numJoint = 20;
   while (ros::ok() && numJoint !=0)
@@ -46,9 +50,9 @@ int main(int argc, char** argv)
     
     if (numJoint > 0 && numJoint < 7)
     {
-        std::cout << "Saisir la valeur du mouvement (0 - 180): " << endl;
-        std::cin >> mouvVal;
-        array.data[numJoint - 1] = mouvVal;
+      std::cout << "Saisir la valeur du mouvement (0 - 180): " << endl;
+      std::cin >> mouvVal;
+      array.data[numJoint - 1] = mouvVal * pi/180;
     }
     pub.publish(array);
     ros::spinOnce();

@@ -181,6 +181,7 @@ add_executable(position_cubes_node src/position_cubes.cpp)
 add_executable(braccio_control_node src/braccio_control.cpp)
 add_executable(cube_position_broadcast src/transform_broadcast.cpp ${CAMELOTSRC})
 add_executable(game_resolving_node src/game_resolving.cpp ${CAMELOTSRC})
+add_executable(inverse_braccio_node src/inverse_braccio.cpp ${CAMELOTSRC})
 
 
 ## Rename C++ executable without prefix
@@ -214,6 +215,10 @@ target_link_libraries(braccio_control_node
    ${catkin_LIBRARIES}
  )
 target_link_libraries(game_resolving_node 
+   ${catkin_LIBRARIES}
+   ${CamelotSolver_LIBRARIES}
+ )
+ target_link_libraries(inverse_braccio_node
    ${catkin_LIBRARIES}
    ${CamelotSolver_LIBRARIES}
  )
