@@ -153,8 +153,18 @@ On this terminal we are going to run the Camelot-Jr program
 Run :
 
 ```sh
-$ rosrun camelot_jr game_resolving_node 
+$ rosrun camelot_jr game_resolving_node _Cpos:=KlineKColumn _Ppos:=PlinePcolumn
 ```
+Example for: 
+  Knight line : 5
+  Knight column : 3
+  Princesse line : 2
+  Princess column : 1
+
+```sh
+$ rosrun camelot_jr game_resolving_node _Cpos:=53 _Ppos:=21
+```
+
 And follow the instructions on the screen 
 
 
@@ -193,8 +203,6 @@ Project Link: [https://github.com/naidzim/Camelot-Jr-solver](https://github.com/
 
 
 
-<!-- ACKNOWLEDGEMENTS -->
-## Acknowledgements
 
 
 
