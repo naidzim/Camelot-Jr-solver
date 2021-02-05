@@ -97,7 +97,7 @@ The program runs on ROS environement and uses Aruco augmented reality libraries 
 
 ### Prerequisites
 
-This project use ROS melodic distribution. Before you start you need to install it and create a catkin workspace.
+This project use ROS melodic distribution. Before you start you need to install it and create a catkin workspace.  
 Please refer to ROS tutorials to install and create the workspace : (http://wiki.ros.org/ROS/Tutorials)
 
 * Aruco
@@ -155,11 +155,11 @@ Run :
 ```sh
 $ rosrun camelot_jr game_resolving_node _Cpos:=KlineKColumn _Ppos:=PlinePcolumn
 ```
-Example for: 
-  Knight line : 5
-  Knight column : 3
-  Princesse line : 2
-  Princess column : 1
+Example for:  
+  * Knight line : 5
+  * Knight column : 3
+  * Princesse line : 2
+  * Princess column : 1
 
 ```sh
 $ rosrun camelot_jr game_resolving_node _Cpos:=53 _Ppos:=21
